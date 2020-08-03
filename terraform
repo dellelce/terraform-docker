@@ -1,0 +1,10 @@
+#!/bin/bash
+# wrapper to terraform binary; if not found will install it.
+
+# use a bind mount or terraform will be installed each time you run an instance of this container
+[ ! -x /terraform/terraform ] &&
+{
+  make --no-print-directory -C /terraform -f /terrash/Makefile terraform || exit $?
+}
+
+/terraform/terraform $*
