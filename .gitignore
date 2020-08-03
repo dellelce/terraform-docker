@@ -1,0 +1,5 @@
+*.swp
+workdir
+
+# terraform binaries & installer
+terradir
