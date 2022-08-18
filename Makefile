@@ -10,3 +10,6 @@ build:
 
 run:
 	@mkdir -p workdir terradir && docker run -it $(MOUNTS) --rm $(IMAGE) bash
+
+push:
+	@docker push $(IMAGE)
