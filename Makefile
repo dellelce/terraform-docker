@@ -1,5 +1,5 @@
 
-IMAGE := dellelce/terraform
+IMAGE := ghcr.io/dellelce/terraform
 MOUNTS = -v $$HOME/.aws:/root/.aws -v $$PWD/workdir:/work -v $$PWD/terradir:/terraform
 
 help:
