@@ -1,5 +1,5 @@
 #
-TERRADOWNLOAD := "https://www.terraform.io/downloads.html"
+TERRADOWNLOAD := "https://www.terraform.io/downloads"
 SSHOPTS := -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 
 TERRAVERS = $$(wget -O - -q $(TERRADOWNLOAD) | awk -f /terrash/terraform.awk  )
