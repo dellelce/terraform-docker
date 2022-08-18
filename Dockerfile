@@ -1,5 +1,5 @@
 
-FROM alpine:3.11
+FROM alpine:3.16
 
 RUN apk add --no-cache gawk bash make vim
 
