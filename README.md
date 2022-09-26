@@ -5,5 +5,5 @@
 ### Run latest version of terraform without any bind mount
 
 ```bash
-docker run -it dellelce/terraform terraform version
+docker run -it --rm  ghcr.io/dellelce/terraform terraform version
 ```
