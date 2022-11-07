@@ -12,7 +12,7 @@ FROM ${BASE}
 
 RUN apk add --no-cache gawk bash make vim git
 
-COPY --from=flint /usr/local/bin/tflint /bin/tflint
+COPY --from=tflint /usr/local/bin/tflint /bin/tflint
 COPY terraform /bin
 COPY src /terrash/
 
