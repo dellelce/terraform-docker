@@ -4,8 +4,8 @@ FROM ${BASE} as tflint
 
 RUN apk add --no-cache bash
 
-COPY install_linux.sh .
-RUN bash install_linux.sh
+COPY install_tflint.sh .
+RUN bash install_tflint.sh
 
 
 FROM ${BASE}
