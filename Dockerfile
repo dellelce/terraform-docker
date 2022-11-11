@@ -16,7 +16,7 @@ COPY --from=tflint /usr/local/bin/tflint /bin/tflint
 COPY terraform /bin
 COPY src /terrash/
 
-COPY vim/vimrc_local /etc/vim/vimrc.local
+COPY vim/vim_local /etc/vim/vimrc.local
 
 RUN mkdir /terraform
 
