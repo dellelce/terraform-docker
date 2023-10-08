@@ -1,4 +1,4 @@
-ARG BASE=alpine:3.16
+ARG BASE=alpine:3.18
 
 FROM ${BASE} as tflint
 
