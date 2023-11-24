@@ -19,8 +19,9 @@ run:
 						   do echo $$x; done | \
 						   awk '/[0-9]+\./' | tr -d '\r'  > $@ || rm -f $@
 
+#	cat .version && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
 tag: .version
-	cat .version && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
+	@ls -lta
 
 push: tag
 	@docker push -a $(IMAGE)
