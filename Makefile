@@ -12,5 +12,8 @@ build:
 run:
 	@mkdir -p workdir terradir && docker run -it $(MOUNTS) --rm $(IMAGE) bash
 
+version:
+	@mkdir -p workdir terradir && docker run -it $(MOUNTS) --rm $(IMAGE) terraform version
+
 push:
 	@docker push $(IMAGE)
