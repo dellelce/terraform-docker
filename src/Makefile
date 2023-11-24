@@ -1,15 +1,16 @@
 #
+ROOT := "/terrash"
 TERRADOWNLOAD := "https://developer.hashicorp.com/terraform/install"
 SSHOPTS := -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 
-TERRAWK ?= /terrash/terraform.awk
+TERRAWK ?= $(ROOT)/terraform.awk
 
-TERRAVERS := $$(< terraform.version )
+TERRAVERS := $$(< $(ROOT)/terraform.version )
 
-terraform.site:
+$(ROOT)/terraform.site:
 	wget -O - -q $(TERRADOWNLOAD) > $@ || { rc=$$?; rm -f $@; exit $$rc; }
 
-terraform.version:
+$(ROOT)/terraform.version: $(ROOT)/terraform.site
 	@wget -O - -q $(TERRADOWNLOAD) | awk -f $(TERRAWK) > $@ || { rm -f $@; exit 1; }
 
 version:
