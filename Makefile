@@ -15,15 +15,16 @@ run:
 
 #  for x in $(terraform version -json | xargs echo | tr -d ','); do echo $x; done | awk '/[0-9]\./'
 .version:
-	mkdir -p workdir terradir && for x in $$( $(RUN) version -json | xargs echo | tr -d ',' ); \
+	@mkdir -p workdir terradir && for x in $$( $(RUN) version -json | xargs echo | tr -d ',' ); \
 						   do echo $$x; done | \
 						   awk '/[0-9]+\./' | tr -d '\r'  > $@ || rm -f $@
 
 json-version:
 	@$(RUN) version -json
 
-tag: .version json-version
-	cat .version && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
+# tag should depende on build but this is more meant to be used in pipeline
+tag: .version
+	@docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
 
 push: tag
 	@docker push -a $(IMAGE)
