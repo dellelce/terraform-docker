@@ -15,11 +15,12 @@ run:
 
 #  for x in $(terraform version -json | xargs echo | tr -d ','); do echo $x; done | awk '/[0-9]\./'
 .version:
-	mkdir -p workdir terradir && for x in $$( $(RUN) version -json | xargs echo | tr -d ',' ); \
+	@mkdir -p workdir terradir && for x in $$( $(RUN) version -json | xargs echo | tr -d ',' ); \
 						   do echo $$x; done | \
-						   awk '/[0-9]+\./'  > $@ || rm -f $@
+						   awk '/[0-9]+\./' | tr -d '\r'  > $@ || rm -f $@
 
-push: .version
-	@version=$$(cat .version); docker tag $(IMAGE) $(IMAGE):$$version; \
-	 docker push $(IMAGE); \
-	 docker push $(IMAGE):$$version
+tag: .version
+	@version=$$(cat .version); docker tag $(IMAGE) $(IMAGE):$$version
+
+push: tag
+	@docker push -a $(IMAGE)
