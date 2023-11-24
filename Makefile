@@ -20,7 +20,7 @@ run:
 						   awk '/[0-9]+\./' | tr -d '\r'  > $@ || rm -f $@
 
 tag: .version
-	docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
+	docker images && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
 
 push: tag
 	@docker push -a $(IMAGE)
