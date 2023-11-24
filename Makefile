@@ -22,9 +22,8 @@ run:
 json-version:
 	@$(RUN) version -json
 
-#	cat .version && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
 tag: .version json-version
-	@ls -lta
+	cat .version && docker tag $(IMAGE) $(IMAGE):$$(cat .version) && docker tag $(IMAGE) $(IMAGE):latest
 
 push: tag
 	@docker push -a $(IMAGE)
