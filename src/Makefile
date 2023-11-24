@@ -1,7 +1,6 @@
 #
 ROOT := "/terrash"
 TERRADOWNLOAD := "https://developer.hashicorp.com/terraform/install"
-SSHOPTS := -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 TERRAWK ?= $(ROOT)/terraform.awk
 TERRAVERS := $$(cat $(ROOT)/terraform.version )
 
