@@ -1,7 +1,7 @@
 #
-ROOT := "/terrash"
+ROOT := "$(PWD)"
 TERRADOWNLOAD := "https://developer.hashicorp.com/terraform/install"
-TERRAWK ?= $(ROOT)/terraform.awk
+TERRAWK ?= /terrash/terraform.awk
 TERRAVERS := $$(cat $(ROOT)/terraform.version )
 
 $(ROOT)/terraform.site:
